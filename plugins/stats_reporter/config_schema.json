@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "report_channel": {
+      "type": "integer",
+      "title": "Report Channel ID",
+      "description": "Channel/chat ID to send automatic reports"
+    },
+    "report_interval_hours": {
+      "type": "integer",
+      "default": 24,
+      "minimum": 1,
+      "maximum": 168,
+      "title": "Report Interval (hours)"
+    },
+    "include_message_stats": {
+      "type": "boolean",
+      "default": true,
+      "title": "Include Message Stats"
+    },
+    "include_user_stats": {
+      "type": "boolean",
+      "default": true,
+      "title": "Include User Stats"
+    },
+    "include_verification_stats": {
+      "type": "boolean",
+      "default": true,
+      "title": "Include Membership Stats"
+    },
+    "top_users_count": {
+      "type": "integer",
+      "default": 5,
+      "minimum": 1,
+      "maximum": 20,
+      "title": "Top Users Count"
+    }
+  }
+}

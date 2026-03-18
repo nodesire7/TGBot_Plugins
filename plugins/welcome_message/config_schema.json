@@ -1,0 +1,56 @@
+{
+  "type": "object",
+  "properties": {
+    "message_template": {
+      "type": "string",
+      "default": "Welcome {user} to {chat_title}!",
+      "title": "Message Template",
+      "description": "Welcome message with variables: {user}, {user_id}, {username}, {chat_title}, {date}"
+    },
+    "parse_mode": {
+      "type": "string",
+      "enum": ["None", "Markdown", "MarkdownV2", "HTML"],
+      "default": "Markdown",
+      "title": "Parse Mode",
+      "description": "Message formatting style"
+    },
+    "mention_user": {
+      "type": "boolean",
+      "default": true,
+      "title": "Mention User",
+      "description": "Create clickable mention for the new user"
+    },
+    "show_rules_button": {
+      "type": "boolean",
+      "default": false,
+      "title": "Show Rules Button",
+      "description": "Add a button to display group rules"
+    },
+    "rules_text": {
+      "type": "string",
+      "default": "",
+      "title": "Rules Text",
+      "description": "Group rules to display when button is clicked"
+    },
+    "delete_after": {
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 86400,
+      "title": "Delete After (seconds)",
+      "description": "Auto-delete welcome message after this many seconds (0 = never)"
+    },
+    "silent": {
+      "type": "boolean",
+      "default": false,
+      "title": "Silent Notification",
+      "description": "Send without notification"
+    },
+    "ignore_bots": {
+      "type": "boolean",
+      "default": true,
+      "title": "Ignore Bots",
+      "description": "Don't send welcome for bot users"
+    }
+  }
+}

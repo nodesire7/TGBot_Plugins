@@ -1,0 +1,58 @@
+{
+  "id": "stats_reporter",
+  "name": "Stats Reporter",
+  "version": "1.0.0",
+  "author": "TGBot Admin",
+  "description": "Generate and send periodic statistics reports. Track message counts, user activity, and verification stats.",
+  "main": "main.py",
+  "hooks": ["on_message", "on_join", "on_leave"],
+  "permissions": ["send_messages"],
+  "category": "utility",
+  "icon": "📊",
+  "keywords": ["stats", "statistics", "report", "analytics", "metrics"],
+  "license": "MIT",
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "report_channel": {
+        "type": "integer",
+        "title": "Report Channel ID",
+        "description": "Channel/chat ID to send reports"
+      },
+      "report_interval_hours": {
+        "type": "integer",
+        "default": 24,
+        "minimum": 1,
+        "maximum": 168,
+        "title": "Report Interval (hours)"
+      },
+      "include_message_stats": {
+        "type": "boolean",
+        "default": true,
+        "title": "Include Message Stats"
+      },
+      "include_user_stats": {
+        "type": "boolean",
+        "default": true,
+        "title": "Include User Stats"
+      },
+      "include_verification_stats": {
+        "type": "boolean",
+        "default": true,
+        "title": "Include Verification Stats"
+      },
+      "top_users_count": {
+        "type": "integer",
+        "default": 5,
+        "minimum": 1,
+        "maximum": 20,
+        "title": "Top Users Count",
+        "description": "Number of top users to show"
+      }
+    }
+  },
+  "commands": [
+    {"command": "stats", "description": "Show current statistics"},
+    {"command": "topusers", "description": "Show most active users"}
+  ]
+}

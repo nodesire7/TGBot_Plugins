@@ -1,0 +1,68 @@
+{
+  "type": "object",
+  "properties": {
+    "max_messages": {
+      "type": "integer",
+      "default": 5,
+      "minimum": 1,
+      "maximum": 50,
+      "title": "Max Messages",
+      "description": "Maximum messages allowed in the time window"
+    },
+    "time_window": {
+      "type": "integer",
+      "default": 10,
+      "minimum": 5,
+      "maximum": 60,
+      "title": "Time Window (seconds)",
+      "description": "Time window for message counting"
+    },
+    "action": {
+      "type": "string",
+      "enum": ["mute", "kick", "warn"],
+      "default": "mute",
+      "title": "Action",
+      "description": "Action to take on flood detection"
+    },
+    "mute_duration": {
+      "type": "integer",
+      "default": 300,
+      "minimum": 60,
+      "maximum": 86400,
+      "title": "Mute Duration (seconds)",
+      "description": "Duration for mute action"
+    },
+    "warn_message": {
+      "type": "string",
+      "default": "Please slow down! Excessive messaging is not allowed.",
+      "title": "Warning Message",
+      "description": "Warning to show before action"
+    },
+    "check_duplicates": {
+      "type": "boolean",
+      "default": true,
+      "title": "Check Duplicates",
+      "description": "Also detect duplicate messages"
+    },
+    "duplicate_threshold": {
+      "type": "integer",
+      "default": 3,
+      "minimum": 2,
+      "maximum": 10,
+      "title": "Duplicate Threshold",
+      "description": "Number of duplicates before action"
+    },
+    "exempt_admins": {
+      "type": "boolean",
+      "default": true,
+      "title": "Exempt Admins",
+      "description": "Don't apply flood limits to admins"
+    },
+    "delete_flood_messages": {
+      "type": "boolean",
+      "default": true,
+      "title": "Delete Flood Messages",
+      "description": "Delete messages that triggered flood detection"
+    }
+  }
+}

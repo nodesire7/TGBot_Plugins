@@ -1,0 +1,72 @@
+{
+  "id": "anti_spam",
+  "name": "Anti Spam",
+  "version": "1.0.0",
+  "author": "TGBot Admin",
+  "description": "Multi-layer spam detection and prevention. Detects spam patterns, repeated messages, and suspicious behavior.",
+  "main": "main.py",
+  "hooks": ["on_message", "on_join"],
+  "permissions": ["delete_messages", "restrict_members", "kick_members"],
+  "category": "moderation",
+  "icon": "🛡️",
+  "keywords": ["spam", "anti-spam", "protection", "filter"],
+  "license": "MIT",
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "max_messages_per_minute": {
+        "type": "integer",
+        "default": 5,
+        "minimum": 1,
+        "maximum": 20,
+        "title": "Max Messages Per Minute",
+        "description": "Maximum messages a user can send per minute"
+      },
+      "max_identical_messages": {
+        "type": "integer",
+        "default": 3,
+        "minimum": 1,
+        "maximum": 10,
+        "title": "Max Identical Messages",
+        "description": "Maximum identical messages before action"
+      },
+      "action": {
+        "type": "string",
+        "enum": ["delete", "mute", "kick"],
+        "default": "delete",
+        "title": "Action",
+        "description": "Action to take on spam detection"
+      },
+      "mute_duration": {
+        "type": "integer",
+        "default": 300,
+        "minimum": 60,
+        "maximum": 86400,
+        "title": "Mute Duration (seconds)",
+        "description": "Duration for mute action"
+      },
+      "check_new_users": {
+        "type": "boolean",
+        "default": true,
+        "title": "Check New Users",
+        "description": "Apply stricter rules to new users"
+      },
+      "new_user_cooldown": {
+        "type": "integer",
+        "default": 300,
+        "minimum": 0,
+        "maximum": 3600,
+        "title": "New User Cooldown (seconds)",
+        "description": "Cooldown period for new users"
+      },
+      "spam_patterns": {
+        "type": "array",
+        "items": {"type": "string"},
+        "default": [],
+        "title": "Spam Patterns",
+        "description": "Regex patterns to detect spam"
+      }
+    }
+  },
+  "commands": []
+}

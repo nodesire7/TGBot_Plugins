@@ -1,0 +1,117 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-03-14T00:00:00Z",
+  "plugins": [
+    {
+      "id": "arithmetic_verification",
+      "name": "Arithmetic Verification",
+      "version": "1.0.0",
+      "author": "TGBot Admin",
+      "description": "Math-based captcha verification for new group members.",
+      "category": "verification",
+      "icon": "🔢",
+      "keywords": ["captcha", "verification", "math", "antibot"],
+      "hooks": ["on_join", "on_callback", "on_message"],
+      "permissions": ["send_messages", "delete_messages", "restrict_members"],
+      "path": "plugins/arithmetic_verification"
+    },
+    {
+      "id": "welcome_message",
+      "name": "Welcome Message",
+      "version": "1.0.0",
+      "author": "TGBot Admin",
+      "description": "Customizable welcome messages for new group members.",
+      "category": "community",
+      "icon": "👋",
+      "keywords": ["welcome", "greeting", "new member"],
+      "hooks": ["on_join"],
+      "permissions": ["send_messages"],
+      "path": "plugins/welcome_message"
+    },
+    {
+      "id": "keyword_filter",
+      "name": "Keyword Filter",
+      "version": "1.0.0",
+      "author": "TGBot Admin",
+      "description": "Auto-delete messages containing blocked keywords.",
+      "category": "moderation",
+      "icon": "🔍",
+      "keywords": ["keyword", "filter", "block", "censor"],
+      "hooks": ["on_message"],
+      "permissions": ["delete_messages"],
+      "path": "plugins/keyword_filter"
+    },
+    {
+      "id": "flood_protection",
+      "name": "Flood Protection",
+      "version": "1.0.0",
+      "author": "TGBot Admin",
+      "description": "Rate limiting and flood prevention for group messages.",
+      "category": "moderation",
+      "icon": "🚧",
+      "keywords": ["flood", "rate limit", "spam", "protection"],
+      "hooks": ["on_message"],
+      "permissions": ["delete_messages", "restrict_members"],
+      "path": "plugins/flood_protection"
+    },
+    {
+      "id": "link_filter",
+      "name": "Link Filter",
+      "version": "1.0.0",
+      "author": "TGBot Admin",
+      "description": "Filter links based on domain whitelist/blacklist rules.",
+      "category": "moderation",
+      "icon": "🔗",
+      "keywords": ["link", "url", "filter", "spam", "domain"],
+      "hooks": ["on_message"],
+      "permissions": ["delete_messages", "restrict_members"],
+      "path": "plugins/link_filter"
+    },
+    {
+      "id": "anti_spam",
+      "name": "Anti Spam",
+      "version": "1.0.0",
+      "author": "TGBot Admin",
+      "description": "Multi-layer spam detection and prevention system.",
+      "category": "moderation",
+      "icon": "🛡️",
+      "keywords": ["spam", "anti-spam", "protection", "filter"],
+      "hooks": ["on_message", "on_join"],
+      "permissions": ["delete_messages", "restrict_members", "kick_members"],
+      "path": "plugins/anti_spam"
+    },
+    {
+      "id": "auto_reply",
+      "name": "Auto Reply",
+      "version": "1.0.0",
+      "author": "TGBot Admin",
+      "description": "Automatic replies based on keywords and patterns.",
+      "category": "automation",
+      "icon": "💬",
+      "keywords": ["reply", "auto", "response", "trigger"],
+      "hooks": ["on_message"],
+      "permissions": ["send_messages"],
+      "path": "plugins/auto_reply"
+    },
+    {
+      "id": "stats_reporter",
+      "name": "Stats Reporter",
+      "version": "1.0.0",
+      "author": "TGBot Admin",
+      "description": "Generate periodic statistics reports for your group.",
+      "category": "utility",
+      "icon": "📊",
+      "keywords": ["stats", "statistics", "report", "analytics"],
+      "hooks": ["on_message", "on_join", "on_leave"],
+      "permissions": ["send_messages"],
+      "path": "plugins/stats_reporter"
+    }
+  ],
+  "categories": [
+    {"id": "verification", "name": "Verification", "count": 1},
+    {"id": "moderation", "name": "Moderation", "count": 4},
+    {"id": "community", "name": "Community", "count": 1},
+    {"id": "automation", "name": "Automation", "count": 1},
+    {"id": "utility", "name": "Utility", "count": 1}
+  ]
+}

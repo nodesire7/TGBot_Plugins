@@ -1,0 +1,64 @@
+{
+  "id": "link_filter",
+  "name": "Link Filter",
+  "version": "1.0.0",
+  "author": "TGBot Admin",
+  "description": "Filter links in group messages. Supports whitelist/blacklist mode with domain-based rules.",
+  "main": "main.py",
+  "hooks": ["on_message"],
+  "permissions": ["delete_messages", "restrict_members"],
+  "category": "moderation",
+  "icon": "🔗",
+  "keywords": ["link", "url", "filter", "spam", "domain"],
+  "license": "MIT",
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "mode": {
+        "type": "string",
+        "enum": ["whitelist", "blacklist"],
+        "default": "blacklist",
+        "title": "Filter Mode",
+        "description": "Whitelist: block all except allowed; Blacklist: allow all except blocked"
+      },
+      "allowed_domains": {
+        "type": "array",
+        "items": {"type": "string"},
+        "default": [],
+        "title": "Allowed Domains",
+        "description": "Domains allowed in whitelist mode"
+      },
+      "blocked_domains": {
+        "type": "array",
+        "items": {"type": "string"},
+        "default": [],
+        "title": "Blocked Domains",
+        "description": "Domains blocked in blacklist mode"
+      },
+      "delete_message": {
+        "type": "boolean",
+        "default": true,
+        "title": "Delete Message",
+        "description": "Delete messages containing filtered links"
+      },
+      "warn_user": {
+        "type": "boolean",
+        "default": true,
+        "title": "Warn User",
+        "description": "Send a warning message to the user"
+      },
+      "warning_message": {
+        "type": "string",
+        "default": "Links are not allowed in this group.",
+        "title": "Warning Message"
+      },
+      "exempt_admins": {
+        "type": "boolean",
+        "default": true,
+        "title": "Exempt Admins",
+        "description": "Admins can post any links"
+      }
+    }
+  },
+  "commands": []
+}

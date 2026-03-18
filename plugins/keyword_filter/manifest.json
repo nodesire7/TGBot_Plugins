@@ -1,0 +1,103 @@
+{
+  "id": "keyword_filter",
+  "name": "Keyword Filter",
+  "version": "1.0.0",
+  "author": "TGBot Admin",
+  "description": "Automatically delete messages containing blocked keywords or patterns. Supports wildcards and regex.",
+  "main": "main.py",
+  "hooks": ["on_message", "on_edited_message", "on_command"],
+  "permissions": ["delete_messages", "restrict_members"],
+  "category": "moderation",
+  "icon": "🔍",
+  "keywords": ["filter", "keyword", "block", "moderation", "censor"],
+  "license": "MIT",
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "blocked_words": {
+        "type": "array",
+        "items": {"type": "string"},
+        "default": [],
+        "title": "Blocked Words",
+        "description": "List of words to block (case-insensitive)"
+      },
+      "blocked_patterns": {
+        "type": "array",
+        "items": {"type": "string"},
+        "default": [],
+        "title": "Blocked Patterns",
+        "description": "List of regex patterns to block"
+      },
+      "action": {
+        "type": "string",
+        "enum": ["delete", "warn", "mute", "kick"],
+        "default": "delete",
+        "title": "Action",
+        "description": "Action to take when keyword found"
+      },
+      "warn_message": {
+        "type": "string",
+        "default": "Your message was removed for containing blocked content.",
+        "title": "Warning Message",
+        "description": "Message to send when action is 'warn'"
+      },
+      "mute_duration": {
+        "type": "integer",
+        "default": 300,
+        "minimum": 60,
+        "maximum": 86400,
+        "title": "Mute Duration (seconds)",
+        "description": "Duration for mute action"
+      },
+      "warn_before_action": {
+        "type": "boolean",
+        "default": true,
+        "title": "Warn Before Action",
+        "description": "Send a warning message before taking action"
+      },
+      "check_edits": {
+        "type": "boolean",
+        "default": true,
+        "title": "Check Edited Messages",
+        "description": "Also filter edited messages"
+      },
+      "exempt_admins": {
+        "type": "boolean",
+        "default": true,
+        "title": "Exempt Admins",
+        "description": "Don't filter messages from admins"
+      },
+      "log_deletions": {
+        "type": "boolean",
+        "default": true,
+        "title": "Log Deletions",
+        "description": "Log deleted messages for review"
+      }
+    }
+  },
+  "commands": [
+    {
+      "command": "addword",
+      "description": "Add a word to the blocklist",
+      "usage": "/addword <word>",
+      "admin_only": true
+    },
+    {
+      "command": "removeword",
+      "description": "Remove a word from the blocklist",
+      "usage": "/removeword <word>",
+      "admin_only": true
+    },
+    {
+      "command": "listwords",
+      "description": "List all blocked words",
+      "admin_only": true
+    },
+    {
+      "command": "addpattern",
+      "description": "Add a regex pattern to block",
+      "usage": "/addpattern <pattern>",
+      "admin_only": true
+    }
+  ]
+}

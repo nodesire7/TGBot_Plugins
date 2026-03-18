@@ -1,0 +1,61 @@
+{
+  "id": "arithmetic_verification",
+  "name": "Arithmetic Verification",
+  "version": "1.0.0",
+  "author": "TGBot Admin",
+  "description": "Math-based captcha verification for new group members. Users must solve arithmetic problems to gain access.",
+  "main": "main.py",
+  "hooks": ["on_join", "on_callback", "on_message"],
+  "permissions": ["send_messages", "delete_messages", "restrict_members"],
+  "category": "verification",
+  "icon": "🔢",
+  "keywords": ["captcha", "verification", "math", "antibot"],
+  "license": "MIT",
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "difficulty": {
+        "type": "string",
+        "enum": ["easy", "medium", "hard"],
+        "default": "easy",
+        "title": "Difficulty Level",
+        "description": "Complexity of arithmetic problems"
+      },
+      "timeout_seconds": {
+        "type": "integer",
+        "default": 60,
+        "minimum": 30,
+        "maximum": 300,
+        "title": "Timeout (seconds)",
+        "description": "Time limit for verification"
+      },
+      "max_attempts": {
+        "type": "integer",
+        "default": 3,
+        "minimum": 1,
+        "maximum": 5,
+        "title": "Maximum Attempts",
+        "description": "Number of attempts before kick"
+      },
+      "welcome_message": {
+        "type": "string",
+        "default": "Welcome! Please solve this math problem to verify you're human.",
+        "title": "Welcome Message",
+        "description": "Message shown before the math problem"
+      },
+      "success_message": {
+        "type": "string",
+        "default": "Verification successful! Welcome to the group.",
+        "title": "Success Message",
+        "description": "Message shown after successful verification"
+      },
+      "kick_on_fail": {
+        "type": "boolean",
+        "default": true,
+        "title": "Kick on Failure",
+        "description": "Whether to kick users who fail verification"
+      }
+    }
+  },
+  "commands": []
+}

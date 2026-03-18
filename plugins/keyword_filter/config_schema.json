@@ -1,0 +1,64 @@
+{
+  "type": "object",
+  "properties": {
+    "blocked_words": {
+      "type": "array",
+      "items": {"type": "string"},
+      "default": [],
+      "title": "Blocked Words",
+      "description": "List of words to block (case-insensitive)"
+    },
+    "blocked_patterns": {
+      "type": "array",
+      "items": {"type": "string"},
+      "default": [],
+      "title": "Blocked Patterns",
+      "description": "List of regex patterns to block"
+    },
+    "action": {
+      "type": "string",
+      "enum": ["delete", "warn", "mute", "kick"],
+      "default": "delete",
+      "title": "Action",
+      "description": "Action to take when keyword found"
+    },
+    "warn_message": {
+      "type": "string",
+      "default": "Your message was removed for containing blocked content.",
+      "title": "Warning Message",
+      "description": "Message to send when action is 'warn'"
+    },
+    "mute_duration": {
+      "type": "integer",
+      "default": 300,
+      "minimum": 60,
+      "maximum": 86400,
+      "title": "Mute Duration (seconds)",
+      "description": "Duration for mute action"
+    },
+    "warn_before_action": {
+      "type": "boolean",
+      "default": true,
+      "title": "Warn Before Action",
+      "description": "Send a warning message before taking action"
+    },
+    "check_edits": {
+      "type": "boolean",
+      "default": true,
+      "title": "Check Edited Messages",
+      "description": "Also filter edited messages"
+    },
+    "exempt_admins": {
+      "type": "boolean",
+      "default": true,
+      "title": "Exempt Admins",
+      "description": "Don't filter messages from admins"
+    },
+    "log_deletions": {
+      "type": "boolean",
+      "default": true,
+      "title": "Log Deletions",
+      "description": "Log deleted messages for review"
+    }
+  }
+}

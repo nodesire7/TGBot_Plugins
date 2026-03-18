@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "properties": {
+    "replies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "trigger": {"type": "string", "title": "Trigger Text"},
+          "trigger_type": {
+            "type": "string",
+            "enum": ["exact", "contains", "regex", "startswith"],
+            "default": "contains",
+            "title": "Trigger Type"
+          },
+          "response": {"type": "string", "title": "Response Text"},
+          "case_sensitive": {"type": "boolean", "default": false, "title": "Case Sensitive"},
+          "reply_to_message": {"type": "boolean", "default": false, "title": "Reply to Message"}
+        },
+        "required": ["trigger", "response"]
+      },
+      "default": [],
+      "title": "Reply Rules"
+    },
+    "cooldown_seconds": {
+      "type": "integer",
+      "default": 5,
+      "minimum": 0,
+      "maximum": 3600,
+      "title": "Cooldown (seconds)"
+    },
+    "random_responses": {
+      "type": "boolean",
+      "default": false,
+      "title": "Random Responses"
+    },
+    "exempt_admins": {
+      "type": "boolean",
+      "default": true,
+      "title": "Exempt Admins"
+    }
+  }
+}

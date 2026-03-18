@@ -1,0 +1,60 @@
+{
+  "id": "auto_reply",
+  "name": "Auto Reply",
+  "version": "1.0.0",
+  "author": "TGBot Admin",
+  "description": "Automatic reply to messages based on keywords, patterns, or triggers. Supports variables and conditional responses.",
+  "main": "main.py",
+  "hooks": ["on_message"],
+  "permissions": ["send_messages"],
+  "category": "automation",
+  "icon": "💬",
+  "keywords": ["reply", "auto", "response", "trigger", "keyword"],
+  "license": "MIT",
+  "config_schema": {
+    "type": "object",
+    "properties": {
+      "replies": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "trigger": {"type": "string"},
+            "trigger_type": {"type": "string", "enum": ["exact", "contains", "regex", "startswith"]},
+            "response": {"type": "string"},
+            "case_sensitive": {"type": "boolean"},
+            "reply_to_message": {"type": "boolean"}
+          }
+        },
+        "default": [],
+        "title": "Reply Rules",
+        "description": "List of trigger-response pairs"
+      },
+      "cooldown_seconds": {
+        "type": "integer",
+        "default": 5,
+        "minimum": 0,
+        "maximum": 3600,
+        "title": "Cooldown (seconds)",
+        "description": "Minimum time between auto replies to same user"
+      },
+      "random_responses": {
+        "type": "boolean",
+        "default": false,
+        "title": "Random Responses",
+        "description": "Select random response from list if multiple match"
+      },
+      "exempt_admins": {
+        "type": "boolean",
+        "default": true,
+        "title": "Exempt Admins",
+        "description": "Don't auto-reply to admin messages"
+      }
+    }
+  },
+  "commands": [
+    {"command": "addreply", "description": "Add an auto-reply rule"},
+    {"command": "delreply", "description": "Delete an auto-reply rule"},
+    {"command": "listreplies", "description": "List all auto-reply rules"}
+  ]
+}

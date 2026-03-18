@@ -1,0 +1,192 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://tgbot-plugins.example.com/schemas/manifest.json",
+  "title": "TGBot Plugin Manifest",
+  "description": "Schema for TGBot plugin manifest.json files",
+  "type": "object",
+  "required": ["id", "name", "version", "author", "description", "main", "hooks"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference (optional)"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$",
+      "minLength": 2,
+      "maxLength": 64,
+      "description": "Unique plugin identifier (lowercase, alphanumeric with underscores)"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Human-readable plugin name"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.]+)?$",
+      "description": "Semantic version (MAJOR.MINOR.PATCH)"
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Plugin author name or organization"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 500,
+      "description": "Brief description of plugin functionality"
+    },
+    "main": {
+      "type": "string",
+      "default": "main.py",
+      "description": "Entry point file (relative to plugin directory)"
+    },
+    "class": {
+      "type": "string",
+      "description": "Main plugin class name (optional, auto-detected if not specified)"
+    },
+    "hooks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "on_join",
+          "on_leave",
+          "on_message",
+          "on_command",
+          "on_callback",
+          "on_verify",
+          "on_edited_message",
+          "on_channel_post",
+          "on_inline_query",
+          "on_chosen_inline_result",
+          "on_shipping_query",
+          "on_pre_checkout_query",
+          "on_poll",
+          "on_poll_answer",
+          "on_my_chat_member",
+          "on_chat_member",
+          "on_chat_join_request",
+          "on_error"
+        ]
+      },
+      "minItems": 1,
+      "description": "List of hooks this plugin subscribes to"
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "read_messages",
+          "send_messages",
+          "edit_messages",
+          "delete_messages",
+          "kick_members",
+          "restrict_members",
+          "promote_members",
+          "invite_members",
+          "pin_messages",
+          "manage_chat",
+          "manage_topics"
+        ]
+      },
+      "default": [],
+      "description": "Required permissions"
+    },
+    "config_schema": {
+      "type": "object",
+      "description": "JSON Schema for plugin configuration"
+    },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "default": {},
+      "description": "Python package dependencies (package: version_spec)"
+    },
+    "min_bot_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Minimum required TGBot Admin version"
+    },
+    "max_bot_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Maximum supported TGBot Admin version"
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri",
+      "description": "Plugin homepage URL"
+    },
+    "repository": {
+      "type": "string",
+      "format": "uri",
+      "description": "Source repository URL"
+    },
+    "license": {
+      "type": "string",
+      "default": "MIT",
+      "description": "SPDX license identifier"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      },
+      "maxItems": 10,
+      "description": "Search keywords"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Plugin icon (emoji or image URL)"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "verification",
+        "moderation",
+        "utility",
+        "entertainment",
+        "communication",
+        "automation",
+        "integration",
+        "other"
+      ],
+      "default": "other",
+      "description": "Plugin category"
+    },
+    "commands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["command", "description"],
+        "properties": {
+          "command": {
+            "type": "string",
+            "pattern": "^[a-z_]+$"
+          },
+          "description": {
+            "type": "string"
+          },
+          "usage": {
+            "type": "string"
+          },
+          "admin_only": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "description": "Commands provided by this plugin"
+    }
+  }
+}

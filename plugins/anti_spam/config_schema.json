@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "properties": {
+    "max_messages_per_minute": {
+      "type": "integer",
+      "default": 5,
+      "minimum": 1,
+      "maximum": 20,
+      "title": "Max Messages Per Minute"
+    },
+    "max_identical_messages": {
+      "type": "integer",
+      "default": 3,
+      "minimum": 1,
+      "maximum": 10,
+      "title": "Max Identical Messages"
+    },
+    "action": {
+      "type": "string",
+      "enum": ["delete", "mute", "kick"],
+      "default": "delete",
+      "title": "Spam Action"
+    },
+    "mute_duration": {
+      "type": "integer",
+      "default": 300,
+      "minimum": 60,
+      "maximum": 86400,
+      "title": "Mute Duration (seconds)"
+    },
+    "check_new_users": {
+      "type": "boolean",
+      "default": true,
+      "title": "Check New Users"
+    },
+    "new_user_cooldown": {
+      "type": "integer",
+      "default": 300,
+      "minimum": 0,
+      "maximum": 3600,
+      "title": "New User Cooldown (seconds)"
+    },
+    "spam_patterns": {
+      "type": "array",
+      "items": {"type": "string"},
+      "default": [],
+      "title": "Spam Patterns (regex)"
+    }
+  }
+}
